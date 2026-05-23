@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RAASTA Dharampeth | Scan-to-Order Rooftop Lounge</title>
+    <link rel="preconnect" href="https://images.unsplash.com" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="splash" id="splash" aria-hidden="true">
+      <img src="assets/raasta-logo-source.png" alt="RAASTA logo" />
+      <span>Opening your rooftop table</span>
+    </div>
+
+    <main class="app-shell" data-mood="evening">
+      <nav class="topbar">
+        <a class="brand-lockup" href="#entry" aria-label="RAASTA home">
+          <img src="assets/raasta-logo-source.png" alt="RAASTA logo" />
+        </a>
+        <div class="venue-chip">
+          <span></span>
+          Rooftop live
+        </div>
+      </nav>
+
+      <section class="hero entry-view" id="entry">
+        <div class="hero-backdrop" role="img" aria-label="RAASTA rooftop at sunset"></div>
+        <div class="ambient-glow glow-one"></div>
+        <div class="ambient-glow glow-two"></div>
+
+        <div class="entry-card glass-panel">
+          <p class="eyebrow">QR table session</p>
+          <h1>Welcome to RAASTA.</h1>
+          <p class="intro-copy">Dharampeth's shared rooftop ordering space for your table, your group, and the evening ahead.</p>
+
+          <div class="table-pill">
+            <span>Sky Terrace</span>
+            <strong>Table R-07</strong>
+          </div>
+
+          <form class="entry-form" id="entryForm">
+            <label>
+              <span>Name</span>
+              <input id="guestName" type="text" autocomplete="name" placeholder="Your name" required />
+            </label>
+            <label>
+              <span>Phone number <em>optional</em></span>
+              <input id="guestPhone" type="tel" autocomplete="tel" placeholder="+91 98765 43210" />
+            </label>
+            <label>
+              <span>Pax count</span>
+              <input id="paxCount" type="number" min="1" max="18" value="4" />
+            </label>
+            <button class="primary-action" type="submit">Start Ordering</button>
+          </form>
+        </div>
+      </section>
+
+      <section class="ordering-view" id="orderingView" aria-live="polite">
+        <header class="session-hero">
+          <div>
+            <p class="eyebrow">Temporary table session</p>
+            <h2>Sky Terrace R-07</h2>
+            <p class="muted">Shared order synced across everyone scanning this QR.</p>
+          </div>
+          <div class="session-logo">
+            <img src="assets/raasta-logo-source.png" alt="RAASTA logo" />
+          </div>
+        </header>
+
+        <section class="status-grid" aria-label="Live table details">
+          <article class="stat-card">
+            <span>Guests</span>
+            <strong id="guestCount">4</strong>
+          </article>
+          <article class="stat-card">
+            <span>Shared total</span>
+            <strong id="liveTotal">Rs 0</strong>
+          </article>
+          <article class="stat-card">
+            <span>Status</span>
+            <strong id="sessionStatus">Browsing</strong>
+          </article>
+        </section>
+
+        <section class="collab-strip glass-panel">
+          <div>
+            <p class="eyebrow">Group ordering</p>
+            <h3>Live table space</h3>
+          </div>
+          <div class="avatar-row" id="avatarRow" aria-label="Current guests"></div>
+          <button class="ghost-button" id="approveJoin" type="button">Approve join</button>
+        </section>
+
+        <section class="menu-shell">
+          <div class="menu-header">
+            <div>
+              <p class="eyebrow" id="daypartLabel">Evening cafe menu</p>
+              <h2>Order for the table</h2>
+            </div>
+            <div class="time-switcher" aria-label="Time based menu">
+              <button class="mood-button" type="button" data-mood="breakfast">AM</button>
+              <button class="mood-button active" type="button" data-mood="evening">PM</button>
+              <button class="mood-button" type="button" data-mood="night">Late</button>
+            </div>
+          </div>
+
+          <div class="category-tabs" id="categoryTabs" aria-label="Menu categories"></div>
+          <div class="menu-grid" id="menuGrid"></div>
+        </section>
+
+        <aside class="cart-panel glass-panel" id="cartPanel">
+          <div class="cart-header">
+            <div>
+              <p class="eyebrow">Shared cart</p>
+              <h3>Review order</h3>
+            </div>
+            <span id="cartCount">0 items</span>
+          </div>
+          <div class="bill-mode" role="group" aria-label="Bill mode">
+            <button class="active" type="button">Shared</button>
+            <button type="button">Split preview</button>
+          </div>
+          <div class="cart-items" id="cartItems">
+            <p class="empty-cart">Add something lush to begin the table order.</p>
+          </div>
+          <label class="kitchen-note">
+            <span>Kitchen note</span>
+            <textarea placeholder="Allergy, birthday note, spice preference..."></textarea>
+          </label>
+          <div class="cart-total">
+            <span>Total</span>
+            <strong id="cartTotal">Rs 0</strong>
+          </div>
+          <button class="primary-action" id="sendOrder" type="button">Send Order to Kitchen</button>
+        </aside>
+      </section>
+
+      <section class="confirmation" id="confirmation">
+        <div class="confirmation-card glass-panel">
+          <img src="assets/raasta-logo-source.png" alt="RAASTA logo" />
+          <p class="eyebrow">Order sent</p>
+          <h2>Kitchen has your rooftop order.</h2>
+          <div class="timeline" id="timeline">
+            <span class="active">Order received</span>
+            <span>Preparing</span>
+            <span>Ready</span>
+            <span>Served</span>
+          </div>
+          <button class="ghost-button" id="backToMenu" type="button">Back to live table</button>
+        </div>
+      </section>
+    </main>
+
+    <div class="bottom-sheet" id="itemSheet" aria-hidden="true">
+      <div class="sheet-card">
+        <button class="sheet-close" id="closeSheet" type="button" aria-label="Close item customization">×</button>
+        <img id="sheetImage" src="" alt="" />
+        <p class="eyebrow" id="sheetCategory"></p>
+        <h2 id="sheetTitle"></h2>
+        <p id="sheetDesc" class="muted"></p>
+
+        <div class="modifier-group">
+          <span class="group-label">Choose size <em>required</em></span>
+          <div class="segmented">
+            <button class="active" type="button">Signature</button>
+            <button type="button">Large</button>
+          </div>
+        </div>
+        <div class="quantity-row">
+          <button id="qtyMinus" type="button">−</button>
+          <strong id="sheetQty">1</strong>
+          <button id="qtyPlus" type="button">+</button>
+        </div>
+        <div class="modifier-group">
+          <span class="group-label">Add-ons</span>
+          <label class="check-row"><input type="checkbox" value="Smoked chilli oil" /> Smoked chilli oil</label>
+          <label class="check-row"><input type="checkbox" value="Extra cheese" /> Extra cheese</label>
+          <label class="check-row"><input type="checkbox" value="LED ice cube" /> LED ice cube</label>
+        </div>
+        <div class="modifier-group">
+          <span class="group-label">Spice / ice level</span>
+          <input class="range" type="range" min="1" max="5" value="3" />
+        </div>
+        <button class="primary-action" id="addToCart" type="button">Add to shared order</button>
+      </div>
+    </div>
+
+    <div class="mobile-bar" id="mobileBar">
+      <button type="button" data-scroll="menu">Menu</button>
+      <button type="button" data-scroll="cart">Cart <span id="mobileTotal">Rs 0</span></button>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
