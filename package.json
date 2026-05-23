@@ -1,0 +1,14 @@
+{
+  "name": "raasta-scan-to-order-frontend",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node static-server.js",
+    "start": "node static-server.js",
+    "build": "echo Static frontend - no build step required"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
