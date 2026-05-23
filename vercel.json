@@ -1,0 +1,14 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "rewrites": [
+    {
+      "source": "/t/:tableId",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/table/:tableId",
+      "destination": "/index.html"
+    }
+  ]
+}
